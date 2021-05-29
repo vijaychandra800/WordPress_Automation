@@ -14,7 +14,6 @@ driver.get("https://crackplex.com/wp-admin/edit.php")
 removeImage="document.getElementsByTagName(\"img\")[0].remove()"
 beforeH2 = 'document.getElementsByTagName("h2")[0].previousElementSibling.remove()'
 
-
 def removeLast():
     last = driver.find_elements_by_tag_name("strong")
     for i in range(1,5):
@@ -28,6 +27,22 @@ def checkBox():
     actions.perform()
     for i in range(1,7):
         driver.find_element_by_id('ez-toc-settings[heading-levels]['+str(i)+']').click()
+
+def metaDescription(key):
+    default = "Soft Crack, Download Soft Crack For Free. Activate Soft For Free. How to Crack Soft 2021. Soft Free Download."
+    new = default.replace("Soft", key)
+    
+    #Change from Post Iframe to Default
+    driver.switch_to.default_content()
+    
+    #Find Open Editor Button 
+    driver.find_element_by_xpath('//*[@id="setting-panel-general"]/div[3]/div/a[1]').click()
+
+    #Update replaced String with KeyWord
+    driver.find_element_by_xpath('//*[@id="rank_math_description"]').send_keys(new)  
+
+    #Add Focus Keyword
+    driver.find_element_by_xpath('//*[@id="setting-panel-general"]/div[4]/div[2]/tags/span').send_keys(key)
 
 
 driver.find_element_by_name("log").send_keys("CrackPlex")
@@ -44,6 +59,6 @@ driver.execute_script(beforeH2)
 time.sleep(5)
 removeLast()
 time.sleep(7)
+metaDescription('eTally Pro')
 checkBox()
-time.sleep(10)    
-
+time.sleep(20)
