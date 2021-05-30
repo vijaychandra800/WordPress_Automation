@@ -28,9 +28,9 @@ def checkBox():
     for i in range(1,7):
         driver.find_element_by_id('ez-toc-settings[heading-levels]['+str(i)+']').click()
 
-def metaDescription(key):
+def metaDescription():
     default = "Soft Crack, Download Soft Crack For Free. Activate Soft For Free. How to Crack Soft 2021. Soft Free Download."
-    new = default.replace("Soft", key)
+    new = default.replace("Soft", download.key)
     
     #Change from Post Iframe to Default
     driver.switch_to.default_content()
@@ -43,6 +43,29 @@ def metaDescription(key):
 
     #Add Focus Keyword
     driver.find_element_by_xpath('//*[@id="setting-panel-general"]/div[4]/div[2]/tags/span').send_keys(key)
+
+def download(key):
+    remove = 'document.getElementsByTagName("h4")[0].nextElementSibling.remove()'
+    align_left = 'document.getElementsByTagName("h4")[0].style.textAlign = "left"'
+    driver.switch_to.default_content()
+    driver.find_element_by_id('content-html').click()
+    download = """<h4>How To Crack Tally</h4>
+<ol>
+ 	<li>Download <a href="https://winfreewares.xyz/full-setup-download/"><strong>Tally Crack</strong></a> from the below links.</li>
+ 	<li>Uninstall any previous version of Softwares using <a href="https://crackplex.com/revo-uninstaller-pro-crack-latest-version-direct-link/">Revo Uninstaller Pro Crack</a>.</li>
+ 	<li>Install the software but don't run it.</li>
+ 	<li>Now Run the Patch file.</li>
+ 	<li>You've Successfully cracked Tally Pro for Free, Enjoy a Full Version of the software for Free.</li>
+</ol>
+<h4>Tally Crack Direct Download Links</h4>"""
+    new_download = download.replace("Tally", key)
+
+    #Go to new Line and enter Text
+    driver.find_element_by_tag_name('h4').send_keys(Keys.ENTER, new_download)
+
+    #Return to Visual
+    #driver.switch_to.default_content()
+    driver.find_element_by_id('content-tmce').click()
 
 
 driver.find_element_by_name("log").send_keys("CrackPlex")
@@ -59,6 +82,11 @@ driver.execute_script(beforeH2)
 time.sleep(5)
 removeLast()
 time.sleep(7)
-metaDescription('eTally Pro')
+download('eTally Pro')
+time.sleep(7)
+metaDescription()
+time.sleep(7)
 checkBox()
 time.sleep(20)
+
+
