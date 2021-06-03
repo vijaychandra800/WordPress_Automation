@@ -9,7 +9,7 @@ options = webdriver.ChromeOptions()
 options.add_experimental_option("detach", True)
 driver = webdriver.Chrome(chrome_options=options)
 driver.maximize_window()
-driver.get("https://crackplex.com/wp-admin/edit.php")
+driver.get("https://site.com/wp-admin/edit.php")
 
 removeImage="document.getElementsByTagName(\"img\")[0].remove()"
 beforeH2 = 'document.getElementsByTagName("h2")[0].previousElementSibling.remove()'
@@ -30,8 +30,8 @@ def checkBox():
         driver.find_element_by_id('ez-toc-settings[heading-levels]['+str(i)+']').click()
 
 def metaDescription(key):
-    default = "Soft Crack, Download Soft Crack For Free. Activate Soft For Free. How to Crack Soft 2021. Soft Free Download."
-    new = default.replace("Soft", key)
+    default = ""
+    new = default.replace("keyword", key)
     
     #Change from Post Iframe to Default
     driver.switch_to.default_content()
@@ -59,12 +59,12 @@ def download(key):
     driver.switch_to.default_content()
     driver.find_element_by_id('content-html').click()
     time.sleep(7)
-    download = ("""<h4>How To Crack Tally</h4><ol><li>Download <a href="https://winfreewares.xyz/full-setup-download/"><strong>Tally Crack</strong></a> from the below links.</li><li>Uninstall any previous version of Softwares using <a href="https://crackplex.com/revo-uninstaller-pro-crack-latest-version-direct-link/">Revo Uninstaller Pro Crack</a>.</li><li>Install the software but don't run it.</li><li>Now Run the Patch file.</li><li>You've Successfully cracked Tally Pro for Free, Enjoy a Full Version of the software for Free.</li></ol><h4>Tally Crack Direct Download Links</h4>""")
-    new_download = download.replace("Tally", key)
+    download = ("")
+    new_download = download.replace("keyword", key)
 
     #Sleep
     time.sleep(3)
-    
+
     #Go to new Line and enter Text
     driver.switch_to.frame('content_ifr')
     a = bool(driver.find_elements_by_tag_name('h4'))
@@ -81,9 +81,9 @@ def download(key):
     driver.switch_to.default_content()
     driver.find_element_by_id('content-tmce').click()
 
-driver.find_element_by_name("log").send_keys("CrackPlex")
+driver.find_element_by_name("log").send_keys("username")
 time.sleep(3)
-driver.find_element_by_name("pwd").send_keys("5sUnf8pq$YAryr$1oc")
+driver.find_element_by_name("pwd").send_keys("pass")
 time.sleep(3)
 driver.find_element_by_name("wp-submit").send_keys(Keys.ENTER)
 time.sleep(5)
@@ -95,7 +95,7 @@ driver.execute_script(beforeH2)
 time.sleep(5)
 removeLast()
 time.sleep(7)
-key = 'eTally Pro'
+key = 'My Keyword'
 download(key)
 time.sleep(7)
 metaDescription(key)
